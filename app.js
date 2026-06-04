@@ -165,6 +165,16 @@ function openProject(index) {
 }
 
 function bindProjectClicks() {
+  grid.addEventListener("pointermove", (event) => {
+    const card = event.target.closest(".project-card");
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty("--mx", `${x}%`);
+    card.style.setProperty("--my", `${y}%`);
+  });
+
   grid.addEventListener("click", (event) => {
     const card = event.target.closest(".project-card");
     if (!card) return;
@@ -333,8 +343,21 @@ async function fetchProjects() {
 }
 
 async function loadProjects() {
-  state.projects = await fetchProjects();
-  renderProjects();
+  if (Array.isArray(window.PORTFOLIO_PROJECTS) && window.PORTFOLIO_PROJECTS.length) {
+    state.projects = window.PORTFOLIO_PROJECTS;
+    renderProjects();
+  }
+
+  try {
+    const fetchedProjects = await fetchProjects();
+    if (Array.isArray(fetchedProjects) && fetchedProjects.length) {
+      state.projects = fetchedProjects;
+      renderProjects();
+    }
+  } catch (error) {
+    if (!state.projects.length) throw error;
+    console.warn("Using embedded project data fallback.", error);
+  }
 }
 
 closeDialog.addEventListener("click", () => dialog.close());
@@ -352,5 +375,5 @@ bindCursorGlow();
 initFluidCanvas();
 loadProjects().catch((error) => {
   console.error(error);
-  grid.innerHTML = "<p class='project-summary'>项目数据加载失败，请刷新页面，或检查 projects.json 是否已发布。</p>";
+  grid.innerHTML = "<p class='project-summary'>项目数据暂时没有加载出来，请稍后刷新页面。</p>";
 });
