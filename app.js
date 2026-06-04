@@ -205,6 +205,10 @@ function observeReveals() {
 
 function bindCursorGlow() {
   const glow = document.querySelector(".cursor-glow");
+  if (!glow) return;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
+
   let x = window.innerWidth * .68;
   let y = window.innerHeight * .32;
   let targetX = x;
@@ -236,9 +240,10 @@ function initFluidCanvas() {
   let height = 0;
   let dpr = 1;
   let time = 0;
+  let lastFrame = 0;
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 1.6);
+    dpr = Math.min(window.devicePixelRatio || 1, 1.15);
     width = window.innerWidth;
     height = window.innerHeight;
     canvas.width = Math.floor(width * dpr);
@@ -265,7 +270,7 @@ function initFluidCanvas() {
     gradient.addColorStop(1, "rgba(12,12,15,0)");
     ctx.fillStyle = gradient;
     ctx.beginPath();
-    const points = 48;
+    const points = 26;
     for (let i = 0; i <= points; i++) {
       const angle = (Math.PI * 2 * i) / points;
       const wave = Math.sin(angle * 3 + time * .018 + wobble) * 0.08 + Math.cos(angle * 5 - time * .014) * 0.05;
@@ -279,18 +284,23 @@ function initFluidCanvas() {
     ctx.fill();
   }
 
-  function frame() {
+  function frame(now) {
+    if (now - lastFrame < 33) {
+      requestAnimationFrame(frame);
+      return;
+    }
+    lastFrame = now;
     time += 1;
     ctx.clearRect(0, 0, width, height);
     ctx.globalCompositeOperation = "screen";
-    ctx.filter = "blur(26px)";
+    ctx.filter = "blur(18px)";
 
     const px = pointer.x * width;
     const py = pointer.y * height;
     const scroll = window.scrollY * .06;
-    drawBlob(width * .22 + Math.sin(time * .008) * 70, height * .25 + scroll, width * .36, "rgba(62,94,255,.20)", "rgba(184,124,255,.11)", 0);
-    drawBlob(width * .82 + Math.cos(time * .006) * 60, height * .18 + scroll * .45, width * .30, "rgba(111,246,255,.17)", "rgba(27,101,255,.10)", 2);
-    drawBlob(px + pointer.vx * 900, py + pointer.vy * 900, Math.min(width, height) * .28, "rgba(255,104,210,.18)", "rgba(111,246,255,.13)", 4);
+    drawBlob(width * .22 + Math.sin(time * .008) * 56, height * .25 + scroll, width * .34, "rgba(62,94,255,.16)", "rgba(184,124,255,.09)", 0);
+    drawBlob(width * .82 + Math.cos(time * .006) * 48, height * .18 + scroll * .45, width * .28, "rgba(111,246,255,.13)", "rgba(27,101,255,.08)", 2);
+    drawBlob(px + pointer.vx * 620, py + pointer.vy * 620, Math.min(width, height) * .24, "rgba(255,104,210,.12)", "rgba(111,246,255,.1)", 4);
 
     ctx.filter = "none";
     ctx.globalCompositeOperation = "source-over";
@@ -300,12 +310,30 @@ function initFluidCanvas() {
   }
 
   resize();
-  frame();
+  requestAnimationFrame(frame);
+}
+
+async function fetchProjects() {
+  const firstShowcaseImage = document.querySelector(".showcase-wall img");
+  const isFlatBuild = firstShowcaseImage && !firstShowcaseImage.getAttribute("src").startsWith("assets/");
+  const candidates = isFlatBuild ? ["projects.json", "assets/projects.json"] : ["assets/projects.json", "projects.json"];
+  let lastError;
+
+  for (const url of candidates) {
+    try {
+      const response = await fetch(`${url}?v=${Date.now()}`, { cache: "no-store" });
+      if (!response.ok) throw new Error(`${url} ${response.status}`);
+      return response.json();
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error("项目数据加载失败");
 }
 
 async function loadProjects() {
-  const response = await fetch("projects.json");
-  state.projects = await response.json();
+  state.projects = await fetchProjects();
   renderProjects();
 }
 
@@ -324,5 +352,5 @@ bindCursorGlow();
 initFluidCanvas();
 loadProjects().catch((error) => {
   console.error(error);
-  grid.innerHTML = "<p class='project-summary'>项目数据加载失败，请检查 assets/projects.json。</p>";
+  grid.innerHTML = "<p class='project-summary'>项目数据加载失败，请刷新页面，或检查 projects.json 是否已发布。</p>";
 });
