@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="顾黎阳 UI/UX Designer 个人作品集网站，展示 App、管理平台与数据大屏设计项目。" />
+    <meta name="theme-color" content="#0c0c0f" />
+    <title>顾黎阳 | UI/UX Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="fluid-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-nav">
+      <a class="brand" href="#top" aria-label="返回首页">GLY</a>
+      <nav aria-label="主导航">
+        <a href="#work">Works</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Portfolio 2026</p>
+          <h1 class="hero-title">顾黎阳</h1>
+          <p class="hero-role">UI/UX Designer</p>
+          <p class="hero-intro">
+            以用户为中心，把复杂业务转化为清晰、直观且富有美感的数字体验。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work">查看作品</a>
+            <a class="button ghost" href="mailto:380382736@qq.com">联系我</a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal delay-1">
+          <div class="orb"></div>
+          <p>Designing calm interfaces for complex systems.</p>
+          <span>App · SaaS · Data Screen</span>
+        </div>
+      </section>
+
+      <section class="marquee" aria-label="作品类型">
+        <div class="marquee-track">
+          <span>Mobile App</span>
+          <span>Admin Platform</span>
+          <span>Data Dashboard</span>
+          <span>Interaction Design</span>
+          <span>Visual System</span>
+          <span>Product Experience</span>
+        </div>
+      </section>
+
+      <section id="work" class="section works">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Selected Works</p>
+          <h2>项目作品</h2>
+          <p>精选 App、管理平台与数据大屏项目，展示从业务理解到界面表达的完整设计能力。</p>
+        </div>
+
+        <div class="filter-bar reveal delay-1" role="tablist" aria-label="作品筛选">
+          <button class="filter active" data-filter="All" type="button">All</button>
+          <button class="filter" data-filter="App Design" type="button">App</button>
+          <button class="filter" data-filter="Admin Platform" type="button">平台</button>
+          <button class="filter" data-filter="Data Screen" type="button">大屏</button>
+        </div>
+
+        <div id="project-grid" class="project-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="about-panel reveal">
+          <p class="eyebrow">About Me</p>
+          <h2>你好，我是顾黎阳。</h2>
+          <p>
+            我是一名 UI 设计师，热衷于通过设计创造简洁、直观且富有美感的数字体验。
+            在设计领域深耕多年，我积累了丰富的项目经验，从企业 SaaS 平台到官网设计，
+            每一个项目都是我成长的足迹。我相信好的设计不仅仅是美观，更要解决用户的实际问题，
+            同时帮助客户实现商业目标。
+          </p>
+        </div>
+        <div class="stats reveal delay-1">
+          <article>
+            <strong>12</strong>
+            <span>精选项目</span>
+          </article>
+          <article>
+            <strong>4</strong>
+            <span>作品类型</span>
+          </article>
+          <article>
+            <strong>51</strong>
+            <span>网页展示图</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="section skills">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Skills</p>
+          <h2>设计能力</h2>
+        </div>
+        <div class="skill-list">
+          <article class="skill-card reveal">
+            <span>01</span>
+            <h3>UI / UX Design</h3>
+            <p>信息架构、交互流程、界面设计、组件化规范与体验优化。</p>
+          </article>
+          <article class="skill-card reveal delay-1">
+            <span>02</span>
+            <h3>Visual System</h3>
+            <p>深色科技风、数据可视化、品牌视觉延展与高保真页面表达。</p>
+          </article>
+          <article class="skill-card reveal delay-2">
+            <span>03</span>
+            <h3>Tools</h3>
+            <p>Figma、After Effects、Photoshop、Cinema 4D 等设计工具。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="contact-card reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>期待与你聊聊设计。</h2>
+          <p>邮箱：<a href="mailto:380382736@qq.com">380382736@qq.com</a></p>
+          <p>电话 / 微信：<a href="tel:13868054794">13868054794</a></p>
+          <div class="hero-actions">
+            <a class="button primary" href="mailto:380382736@qq.com">发送邮件</a>
+            <a class="button ghost" href="#top">回到顶部</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="project-dialog" class="project-dialog">
+      <button class="dialog-close" type="button" aria-label="关闭项目详情">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
