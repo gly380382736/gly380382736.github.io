@@ -105,7 +105,7 @@ function projectCard(project, index) {
       <div class="project-meta">
         <div class="project-kicker">
           <span>${String(index + 1).padStart(2, "0")}</span>
-          <span>${project.category}</span>
+          <span>${project.category.replace(" Design", "")}</span>
         </div>
         <h3>${project.title}</h3>
         <p class="project-summary">${copy.summary}</p>
@@ -369,8 +369,8 @@ function initFluidCanvas() {
 }
 
 async function fetchProjects() {
-  const firstShowcaseImage = document.querySelector(".showcase-wall img");
-  const isFlatBuild = firstShowcaseImage && !firstShowcaseImage.getAttribute("src").startsWith("assets/");
+  const buildProbeImage = document.querySelector(".hero-poster img, .showcase-wall img");
+  const isFlatBuild = buildProbeImage && !buildProbeImage.getAttribute("src").startsWith("assets/");
   const candidates = isFlatBuild ? ["projects.json", "assets/projects.json"] : ["assets/projects.json", "projects.json"];
   let lastError;
 
