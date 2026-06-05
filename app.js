@@ -128,6 +128,34 @@ function openProject(index) {
   const project = state.projects[index];
   if (!project) return;
   const copy = narrative(project);
+  const isAppProject = project.category === "App Design";
+  const galleryMarkup = isAppProject
+    ? `
+      <div class="app-gallery-shell">
+        <div class="app-gallery-head">
+          <span>Mobile screens</span>
+          <div class="app-gallery-actions">
+            <button class="gallery-nav prev" type="button" aria-label="上一组 App 页面">‹</button>
+            <button class="gallery-nav next" type="button" aria-label="下一组 App 页面">›</button>
+          </div>
+        </div>
+        <div class="app-gallery" tabindex="0" aria-label="${project.title} App 页面横向浏览">
+          ${project.images.map((image, imageIndex) => `
+            <article class="app-screen-card">
+              <span>${String(imageIndex + 1).padStart(2, "0")}</span>
+              <img src="${image.src}" alt="${image.alt}" loading="lazy" width="${image.width}" height="${image.height}" />
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    `
+    : `
+      <div class="dialog-gallery">
+        ${project.images.map((image) => `
+          <img src="${image.src}" alt="${image.alt}" loading="lazy" width="${image.width}" height="${image.height}" />
+        `).join("")}
+      </div>
+    `;
 
   dialogContent.innerHTML = `
     <div class="dialog-hero">
@@ -150,11 +178,7 @@ function openProject(index) {
         </article>
       </div>
     </div>
-    <div class="dialog-gallery">
-      ${project.images.map((image) => `
-        <img src="${image.src}" alt="${image.alt}" loading="lazy" width="${image.width}" height="${image.height}" />
-      `).join("")}
-    </div>
+    ${galleryMarkup}
   `;
 
   if (typeof dialog.showModal === "function") {
@@ -162,6 +186,27 @@ function openProject(index) {
   } else {
     dialog.setAttribute("open", "");
   }
+
+  if (isAppProject) bindAppGallery(dialogContent);
+}
+
+function bindAppGallery(root) {
+  const gallery = root.querySelector(".app-gallery");
+  const prev = root.querySelector(".gallery-nav.prev");
+  const next = root.querySelector(".gallery-nav.next");
+  if (!gallery || !prev || !next) return;
+
+  const scrollGallery = (direction) => {
+    const firstCard = gallery.querySelector(".app-screen-card");
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : gallery.clientWidth / 3;
+    gallery.scrollBy({
+      left: direction * (cardWidth + 18),
+      behavior: "smooth",
+    });
+  };
+
+  prev.addEventListener("click", () => scrollGallery(-1));
+  next.addEventListener("click", () => scrollGallery(1));
 }
 
 function bindProjectClicks() {
