@@ -349,50 +349,49 @@ img {
 
 .hero-card {
   position: relative;
-  width: min(calc(100vw - 40px), 1480px);
-  min-height: clamp(360px, 34vw, 560px);
-  padding: clamp(18px, 3vw, 34px);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: clamp(28px, 4.5vw, 72px);
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.045)),
-    rgba(12, 16, 34, .72);
-  box-shadow: 0 40px 180px rgba(82, 39, 255, .24), 0 28px 120px rgba(0,0,0,.58);
-  backdrop-filter: blur(22px) saturate(1.25);
-  -webkit-backdrop-filter: blur(22px) saturate(1.25);
-  overflow: hidden;
+  width: 100vw;
+  min-height: clamp(360px, 32vw, 520px);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  overflow: visible;
   transform: translateZ(0);
 }
 
 .hero-card::before {
   content: "";
   position: absolute;
-  inset: -24%;
+  inset: -28% -8%;
   background:
     radial-gradient(circle at 28% 30%, rgba(124,255,103,.5), transparent 17%),
     radial-gradient(circle at 45% 36%, rgba(62,243,255,.4), transparent 19%),
     radial-gradient(circle at 58% 42%, rgba(124,60,255,.72), transparent 22%),
     radial-gradient(circle at 72% 60%, rgba(255,91,221,.58), transparent 18%);
   filter: blur(42px) saturate(1.35);
-  opacity: .62;
+  opacity: .46;
   animation: aurora 14s ease-in-out infinite alternate;
 }
 
 .hero-card::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -10% 0 0;
   background:
-    linear-gradient(90deg, rgba(0,0,0,.74), transparent 18%, transparent 82%, rgba(0,0,0,.74)),
-    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.68));
+    linear-gradient(90deg, rgba(5,7,17,.78), transparent 12%, transparent 88%, rgba(5,7,17,.78)),
+    linear-gradient(180deg, rgba(5,7,17,.02), rgba(5,7,17,.54) 82%, rgba(5,7,17,.86));
   pointer-events: none;
 }
 
 .showcase-wall {
   position: relative;
   z-index: 1;
-  height: clamp(250px, 25vw, 380px);
-  margin-inline: calc(clamp(18px, 3vw, 34px) * -1);
+  height: clamp(270px, 27vw, 420px);
+  width: 100vw;
+  margin-inline: 0;
   overflow: hidden;
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
@@ -451,12 +450,14 @@ img {
   position: relative;
   z-index: 2;
   display: block;
+  width: min(calc(100% - 40px), 1200px);
+  margin-inline: auto;
   text-align: left;
 }
 
 .hero-card p {
   width: min(760px, 100%);
-  margin: clamp(18px, 2.5vw, 30px) 0 0;
+  margin-top: clamp(18px, 2.5vw, 30px);
   font-size: clamp(24px, 3.2vw, 48px);
   line-height: .98;
   font-weight: 700;
@@ -812,13 +813,15 @@ img {
 }
 
 .project-dialog {
-  width: min(calc(100% - 28px), 1180px);
+  width: min(calc(100% - 28px), 1320px);
   max-height: calc(100svh - 32px);
   padding: 0;
   border: 1px solid rgba(255,255,255,.15);
   border-radius: 38px;
   color: var(--text);
-  background: #070708;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(124,255,103,.08), transparent 28%),
+    #070914;
   box-shadow: 0 30px 120px rgba(0,0,0,.72);
   overflow: auto;
 }
@@ -890,19 +893,21 @@ img {
 
 .dialog-gallery {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: 1fr;
+  gap: 18px;
   padding: 0 clamp(14px, 3vw, 28px) 28px;
 }
 
 .dialog-gallery img {
   width: 100%;
-  height: min(64vw, 570px);
-  object-fit: cover;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
   object-position: top center;
   border: 1px solid var(--line);
   border-radius: 24px;
-  background: #09090d;
+  background: rgba(255,255,255,.035);
+  box-shadow: 0 20px 80px rgba(0,0,0,.26);
 }
 
 .reveal {
@@ -950,8 +955,8 @@ img {
   }
 
   .hero-card {
-    width: calc(100vw - 24px);
-    border-radius: 34px;
+    width: 100vw;
+    border-radius: 0;
   }
 
   .showcase-row img {
