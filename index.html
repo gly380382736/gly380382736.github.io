@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="顾黎阳 UI/UX Designer personal portfolio with interactive 3D hero and selected digital product work."
+    />
+    <title>顾黎阳 | UI/UX Designer</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fed400'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='800' fill='%23111111'%3EGL%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://prod.spline.design" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./assets/library/portfolio-library.js"></script>
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <main aria-label="顾黎阳 UI/UX 设计师个人作品集">
+      <section class="hero" id="home" aria-label="Portfolio hero">
+        <div class="noise" aria-hidden="true"></div>
+        <div class="cursor-light" aria-hidden="true"></div>
+        <div class="top-ruler" aria-hidden="true"></div>
+
+        <header class="site-header">
+          <a class="brand" href="#home" aria-label="顾黎阳 homepage">
+            <span class="brand-mark">GL</span>
+            <span>顾黎阳</span>
+          </a>
+          <nav class="nav-links" aria-label="Primary navigation">
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </header>
+
+        <section class="hero-layout">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">UI/UX Designer / Product Interface</p>
+            <h1 class="hero-title">Interfaces with calm precision.</h1>
+            <p class="intro">
+              你好，我是顾黎阳。专注于产品界面、后台系统、大屏可视化与移动端体验设计，把复杂业务整理成清晰、可信、有美感的数字产品。
+            </p>
+
+            <div class="hero-actions" aria-label="Portfolio actions">
+              <a class="primary-action" href="#work">View Selected Work</a>
+              <a class="secondary-action" href="mailto:380382736@qq.com">Start a Project</a>
+            </div>
+
+            <dl class="metrics" aria-label="Designer highlights">
+              <div>
+                <dt>4</dt>
+                <dd>Work directions</dd>
+              </div>
+              <div>
+                <dt>30+</dt>
+                <dd>Interface screens</dd>
+              </div>
+              <div>
+                <dt>3D</dt>
+                <dd>Motion direction</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="scene-shell reveal" aria-label="Interactive 3D robot scene">
+            <div class="scene-status" aria-hidden="true">
+              <span></span>
+              Live prototype
+            </div>
+            <spline-viewer
+              class="robot-scene"
+              loading-anim-type="spinner-small-dark"
+              data-scene-url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            ></spline-viewer>
+            <div class="scene-fallback" role="status">Loading 3D scene</div>
+          </div>
+        </section>
+
+        <footer class="hero-footer" aria-label="Portfolio focus areas">
+          <a href="#systems">Design Systems</a>
+          <a href="#apps">Mobile Apps</a>
+          <a href="#dashboards">Dashboards</a>
+          <a href="#motion">Motion UI</a>
+        </footer>
+      </section>
+
+      <section class="work-strip reflection-strip" aria-label="Design philosophy motion strip">
+        <div class="strip-meta">
+          <span>@2026</span>
+          <span>Design beyond static screens</span>
+          <span>By GLY</span>
+        </div>
+        <div class="reflection-stage reveal" aria-label="Interactive glass reflection typography">
+          <p class="reflection-label">Interactive direction</p>
+          <h2>
+            <span>Designing</span>
+            <span>interfaces</span>
+            <span>beyond</span>
+            <span>static screens</span>
+          </h2>
+          <div class="glass-sphere sphere-lg" aria-hidden="true"></div>
+          <div class="glass-sphere sphere-md" aria-hidden="true"></div>
+          <div class="glass-sphere sphere-sm" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="about-section section-shell" id="about">
+        <div class="section-kicker reveal">01 / About</div>
+        <div class="about-grid">
+          <h2 class="section-title reveal">About GLY</h2>
+          <div class="about-panel reveal">
+            <p>
+              我热衷于通过设计创造简洁、直观且富有美感的数字体验。从企业 SaaS 平台到政务与城市级数字大屏，我关注信息层级、业务流转和视觉情绪之间的平衡。
+            </p>
+            <p>
+              好的设计不只是漂亮，也要帮助用户快速理解问题、完成任务，并让客户的业务价值被看见。
+            </p>
+          </div>
+        </div>
+        <div class="skill-ticker reveal" aria-label="Design tools and skills">
+          <span>Figma</span>
+          <span>After Effects</span>
+          <span>Photoshop</span>
+          <span>C4D</span>
+          <span>Design Systems</span>
+          <span>Dashboard UI</span>
+        </div>
+      </section>
+
+      <section class="projects-section section-shell" id="work">
+        <div class="section-kicker reveal">02 / Selected work</div>
+        <div class="section-heading-row reveal">
+          <h2 class="section-title">Project Index</h2>
+          <p>
+            四个素材文件夹已全部纳入作品库。页面只保留分类索引和缩略预览，点击任意页面后查看完整大图、项目阐述和设计拆解。
+          </p>
+        </div>
+
+        <div class="library-dashboard reveal" role="tablist" aria-label="作品素材分类切换">
+          <a href="#library-apps" role="tab" data-library-category="apps">
+            <span>01</span>
+            <strong>App 项目</strong>
+            <em data-count="apps">96 pages</em>
+          </a>
+          <a href="#library-platforms" role="tab" data-library-category="platforms">
+            <span>02</span>
+            <strong>管理平台</strong>
+            <em data-count="platforms">35 pages</em>
+          </a>
+          <a href="#library-dashboards" role="tab" data-library-category="dashboards">
+            <span>03</span>
+            <strong>数据大屏</strong>
+            <em data-count="dashboards">22 pages</em>
+          </a>
+          <a href="#library-visuals" role="tab" data-library-category="visuals">
+            <span>04</span>
+            <strong>视觉探索</strong>
+            <em data-count="visuals">11 pages</em>
+          </a>
+        </div>
+
+        <div class="library-note reveal">
+          <span>Interaction</span>
+          <p>先点击上方四个分类，再选择分类下的项目名称；每次只展示当前项目的一组页面，完整页面、设计原因和页面拆分都在点击后的查看器中展示。</p>
+        </div>
+
+        <div class="portfolio-library" id="portfolioLibrary" aria-live="polite"></div>
+      </section>
+
+      <dialog class="work-viewer" aria-label="作品大图查看器">
+        <button class="viewer-close" type="button" aria-label="Close preview">Close</button>
+        <div class="viewer-layout">
+          <figure>
+            <img alt="" />
+          </figure>
+          <aside>
+            <p class="project-type viewer-type">Preview</p>
+            <h3></h3>
+            <dl class="viewer-meta">
+              <div>
+                <dt>Project</dt>
+                <dd data-viewer-project></dd>
+              </div>
+              <div>
+                <dt>Source</dt>
+                <dd data-viewer-source></dd>
+              </div>
+              <div>
+                <dt>Size</dt>
+                <dd data-viewer-size></dd>
+              </div>
+            </dl>
+            <div class="viewer-copy">
+              <section>
+                <h4>为什么这么做</h4>
+                <p data-viewer-why></p>
+              </section>
+              <section>
+                <h4>这样做的好处</h4>
+                <p data-viewer-benefit></p>
+              </section>
+              <section class="viewer-breakdown">
+                <h4>页面拆分</h4>
+                <ol data-viewer-breakdown></ol>
+              </section>
+            </div>
+          </aside>
+        </div>
+      </dialog>
+
+      <section class="capability-section section-shell" id="motion">
+        <div class="section-kicker reveal">03 / Capability</div>
+        <h2 class="section-title reveal">Design system for moving products.</h2>
+        <div class="capability-list">
+          <div class="capability-row reveal">
+            <span>01</span>
+            <h3>产品界面设计</h3>
+            <p>从需求、信息架构到高保真界面，建立可落地、可复用的页面系统。</p>
+          </div>
+          <div class="capability-row reveal">
+            <span>02</span>
+            <h3>数据大屏设计</h3>
+            <p>为驾驶舱、监测平台、指挥中心设计清晰的信息层级和沉浸式视觉表达。</p>
+          </div>
+          <div class="capability-row reveal">
+            <span>03</span>
+            <h3>交互动效设计</h3>
+            <p>用克制的动效建立反馈、节奏和空间关系，让界面更有呼吸感。</p>
+          </div>
+          <div class="capability-row reveal">
+            <span>04</span>
+            <h3>视觉与 AIGC</h3>
+            <p>结合 Photoshop、C4D 与 AI 生成能力，补充品牌活动和内容传播视觉。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="contact-inner reveal">
+          <p class="section-kicker">04 / Contact</p>
+          <h2>Let’s make the next interface feel clear.</h2>
+          <div class="contact-actions">
+            <a class="primary-action" href="mailto:380382736@qq.com">380382736@qq.com</a>
+            <a class="secondary-action" href="tel:13868054794">13868054794</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
